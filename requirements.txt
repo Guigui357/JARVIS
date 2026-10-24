@@ -8,5 +8,7 @@ google-generativeai>=0.8.0
 pyperclip>=1.8.2  # digitar texto com acentos no controle de tela
 
 # Opcionais:
+# SpeechRecognition  # botão FALAR (entrada de voz; envia o áudio ao Google)
+# pyaudio           # captura do microfone para o SpeechRecognition
 # opencv-python   # localizar imagens na tela com tolerância (confidence)
 # pyttsx3         # voz do J.A.R.V.I.S. (interruptor VOZ)

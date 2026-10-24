@@ -23,10 +23,22 @@ automação residencial via Home Assistant.
   sensores, listagem de entidades e chamada genérica de qualquer serviço do Home Assistant.
 - **Segurança**: ações sensíveis (encerrar processos, travar, teclado, abrir aplicativos, controlar a tela, fechaduras,
   alarmes, portões) pedem autorização por diálogo; serviços administrativos do Home Assistant são bloqueados.
+- **Configuração no app**: botão **⚙ CONFIG** (ou `/config`) para editar chave do Gemini, modelos, Home Assistant e opções
+  sem mexer em arquivos; grava em `jarvis.env`/`~/.jarvis/config.env` (permissão 600) e aplica na hora. No primeiro uso,
+  sem chave configurada, a janela abre sozinha.
+- **Painéis de acompanhamento**: atividade das ferramentas em tempo real (executando, ok, falhou, negada) e rodapé com
+  modelo em uso, opções ligadas e latência da última resposta.
+- **Casa já conhecida**: ao conectar ao Home Assistant, a lista de entidades controláveis (luzes, tomadas, climatizadores,
+  cortinas, cenas etc.) é entregue ao modelo, que passa a usar os `entity_id` corretos sem precisar listá-los a cada pedido.
+- **Microfone** (opcional): botão **◉ FALAR** grava uma frase e a envia como pedido. Requer `SpeechRecognition` e `pyaudio`.
+  **Atenção: o áudio é enviado ao serviço de reconhecimento de voz do Google** (`recognize_google`); não use para assuntos sigilosos.
 - **Extras**: voz opcional (`pyttsx3`), histórico de comandos (↑/↓), botões de ação rápida, log persistente em
   `~/.jarvis/jarvis.log` e migração automática de modelo se o configurado for descontinuado.
 
 ## Instalação
+
+Atalho: `./iniciar.sh` (Linux/macOS) ou `iniciar.bat` (Windows, duplo clique) criam o ambiente virtual, instalam as
+dependências, copiam `jarvis.env.example` para `jarvis.env` e iniciam o programa. Passo a passo manual:
 
 ```bash
 git clone <url-do-seu-repositorio>
@@ -61,7 +73,7 @@ Ordem de prioridade: variáveis de ambiente, `jarvis.env` ao lado do script, `ja
 ## Uso
 
 Digite pedidos em linguagem natural: "feche o Chrome", "deixe a luz da sala a 30%", "como está a temperatura
-da casa?", "quais arquivos PDF recentes eu tenho em Documentos?". Comandos locais: `/limpar`, `/reset`, `/parar`, `/ajuda`.
+da casa?", "quais arquivos PDF recentes eu tenho em Documentos?". Comandos locais: `/limpar`, `/reset`, `/parar`, `/config`, `/ajuda`.
 
 O campo de mensagem fica na base da coluna central ("Ordene, Senhor..."); Enter ou **TRANSMITIR** envia. A janela se ajusta
 à resolução da tela (cabe em 1366x768; a conta de tamanho é testada, o visual não) e **F11** alterna tela cheia.
